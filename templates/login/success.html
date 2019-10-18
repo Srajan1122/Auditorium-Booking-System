@@ -4,6 +4,7 @@ Logged in
 {% endblock title %}
 {% block body  %}
   <h1>Success</h1>
+  <h2>{{ pro }}</h2>
   <form method="POST",action=''>
     {% csrf_token %}
   <button type="submit" class="btn btn-danger mx-3 ">Logout</button>
