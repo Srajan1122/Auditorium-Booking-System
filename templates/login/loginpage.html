@@ -3,6 +3,12 @@
 LoginForm 
 {% endblock Title %} 
 {% block body %}
+<style>
+  .btn-google {
+    color: white;
+    background-color: #ea4335;
+  } 
+</style>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -21,7 +27,7 @@ LoginForm
               <input type="password" name="Password" class="form-control" id="exampleInputPassword1"
                 placeholder="Password" />
             </div>
-
+            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google-plus-g mr-2"></i>Sign in with Google</button>
             <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">
               Submit
             </button>
