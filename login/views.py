@@ -70,3 +70,17 @@ def History(request):
         loggedout = redirect('/loggedout/')
         return loggedout
     return render(request, 'login/History.html')
+
+def Register(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = User.objects.create_user(username,email,password)
+        user.save()
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
+        response = redirect('/Homepage/')
+        return response
+
+    return render(request,'login/register.html')
