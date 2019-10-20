@@ -1,19 +1,36 @@
-{% extends 'login/basic.html' %}
+{% extends 'login/basic.html' %} 
 {% block Title %}
-  LoginForm
-{% endblock Title %}
+LoginForm 
+{% endblock Title %} 
 {% block body %}
-<form class="mx-3 my3" method="POST" action="">
-      {% csrf_token %}
+<div class="container-fluid ">
+  <form class="mx-3 my3" method="POST" action="">
+    {% csrf_token %}
     <div class="form-group">
       <label for="exampleInputEmail1">Username</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" name="Username" aria-describedby="emailHelp" placeholder="Enter Username">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your Username with anyone else.</small>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        name="Username"
+        aria-describedby="emailHelp"
+        placeholder="Enter Username"
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your Username with anyone else.</small
+      >
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" name="Password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input
+        type="password"
+        name="Password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
 {% endblock body %}

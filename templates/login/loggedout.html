@@ -1,9 +1,9 @@
-{% extends "login/basic.html" %}
-{% block title %}
-Logged out
-{% endblock title %}
-
+{% extends "login/basic.html" %} 
+{% block title %} 
+Loggedout
+{% endblock title %} 
 {% block body %}
- <h1>Logout Success</h1>
+<h1>Logout Success</h1>
+<h4>You will be redirected to Login page in 5 secs</h4>
+<meta http-equiv="refresh" content="5;url=http://127.0.0.1:8000/" />
 {% endblock body %}
-    

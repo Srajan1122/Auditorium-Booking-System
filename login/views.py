@@ -3,19 +3,20 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
-Username=None;
-user=None;
+
 def loginpage(request):
     if request.method == 'POST':
         Username = request.POST.get('Username')
         Password = request.POST.get('Password')
         print(Username)
+        temp = Username
         user = authenticate(request, username=Username, password=Password)
         print(user)
         if user is not None:
             login(request, user)
-            response = redirect('/success/')
+            response = redirect('/Homepage/')
             return response
         else:
             failedresponse = redirect('/failed/')
@@ -32,14 +33,40 @@ def success(request):
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     elif request.user.is_authenticated and request.method == 'POST':
         logout(request)
-        print(user,Username)
         loggedout = redirect('/loggedout/')
         return loggedout
-    params={'pro':Username}
-    return render(request, 'login/success.html',params)
+    hi = request.user.username
+    params = {'pro': hi}
+    return render(request, 'login/Homepage.html', params)
 
 
 def loggedout(request):
-    if not request.user.is_authenticated:
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, 'login/loggedout.html')
+
+
+@login_required
+def booking(request):
+    if request.user.is_authenticated and request.method == 'POST':
+        logout(request)
+        loggedout = redirect('/loggedout/')
+        return loggedout
+    return render(request, 'login/Booking.html')
+
+
+@login_required
+def pending(request):
+
+    if request.user.is_authenticated and request.method == 'POST':
+        logout(request)
+        loggedout = redirect('/loggedout/')
+        return loggedout
+    return render(request, 'login/pending.html')
+
+
+@login_required
+def History(request):
+    if request.user.is_authenticated and request.method == 'POST':
+        logout(request)
+        loggedout = redirect('/loggedout/')
+        return loggedout
+    return render(request, 'login/History.html')
