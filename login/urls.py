@@ -9,5 +9,5 @@ urlpatterns = [
     path("booking/", views.booking, name="booking"),
     path("pending/", views.pending, name="pending"),
     path("History/", views.History, name="History"),
-
+    path("Register/", views.Register, name="Register"),
 ]
