@@ -60,5 +60,5 @@ class BookingForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super(BookingForm, self).__init__(*args, **kwargs)
-        self.fields['name'].label = "Your name:"
+        self.fields['name'].initial = self.request.user.username
         self.fields['email'].initial = self.request.user.email

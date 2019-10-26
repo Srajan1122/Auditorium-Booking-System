@@ -24,7 +24,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item ">
-        <form method="POST" ,action="{% url 'logout' %}">
+        <form method="POST" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger mx-3">Logout</button>
         </form>
@@ -35,7 +35,7 @@
 
 
 <div class='container'>
-<form class="needs-validation" novalidate action='' method='POST'>
+<form class="needs-validation" novalidate action=' ' method='POST'>
   {% csrf_token %}
   <div class="form-row">
     <div class="col-md-4 mb-3">
