@@ -1,8 +1,10 @@
-{% extends "login/basic.html" %} 
-{% block title %} 
-Failed to login 
+{% extends "login/basic.html" %}
+{% block title %}
+Failed to login
 {% endblock title %} {% block body %}
 <h1>Failed to login</h1>
-Sorry we are unable to process your request due to certain problmes:
-<br />
-1)Username or Password is not matching. {% endblock body %}
+<pre>Sorry we are unable to process your request due to certain problmes:
+Username or Password is not matching.</pre>
+<h4>You will be redirected to Login page in 3 secs</h4>
+<meta http-equiv="refresh" content="3;url=/" />
+{% endblock body %}
