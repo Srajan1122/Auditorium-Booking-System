@@ -24,7 +24,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item ">
-        <form method="POST" ,action="{% url 'logout' %}">
+        <form method="POST" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger mx-3">Logout</button>
         </form>
@@ -32,9 +32,57 @@
     </ul>
   </div>
 </nav>
-<form action='' method='POST'>
+
+
+<div class='container'>
+<form class="needs-validation" novalidate action=' ' method='POST'>
   {% csrf_token %}
-   {{ form }}
-  <input value = 'submit' type='submit'>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip01">Name</label>
+        {{ form.name }}
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip02">Email</label>
+   {{ form.email }}
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltipUsername">Place</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="validationTooltipUsernamePrepend">1</span>
+        </div>
+        {{ form.place }}
+        <div class="invalid-tooltip">
+          Please choose a unique and valid username.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip03">City</label>
+      {{ form.date }}
+      <div class="invalid-tooltip">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip04">Start-time</label>
+      {{ form.start_time}}   
+     </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip05">End-time</label>
+  {{ form.end_time}}
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
+</div>
 {% endblock body %}

@@ -52,7 +52,7 @@ def booking(request):
             form.save()
         else:
             return HttpResponse('invail form')
-    form = BookingForm()
+    form = BookingForm(request = request )
     return render(request, 'login/Booking.html',{'form' : form})
 
 @login_required
