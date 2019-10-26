@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from .forms import BookingForm
+from django.http import HttpResponse
 
 
 def loginpage(request):
@@ -31,44 +33,35 @@ def failed(request):
 def success(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    elif request.user.is_authenticated and request.method == 'POST':
-        logout(request)
-        loggedout = redirect('/loggedout/')
-        return loggedout
     hi = request.user.username
     params = {'pro': hi}
     return render(request, 'login/Homepage.html', params)
 
 
 def loggedout(request):
+    if request.user.is_authenticated and request.method == 'POST':
+        logout(request)
     return render(request, 'login/loggedout.html')
 
 
 @login_required
 def booking(request):
-    if request.user.is_authenticated and request.method == 'POST':
-        logout(request)
-        loggedout = redirect('/loggedout/')
-        return loggedout
-    return render(request, 'login/Booking.html')
-
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid:
+            form.save()
+        else:
+            return HttpResponse('invail form')
+    form = BookingForm()
+    return render(request, 'login/Booking.html',{'form' : form})
 
 @login_required
 def pending(request):
-
-    if request.user.is_authenticated and request.method == 'POST':
-        logout(request)
-        loggedout = redirect('/loggedout/')
-        return loggedout
     return render(request, 'login/pending.html')
 
 
 @login_required
 def History(request):
-    if request.user.is_authenticated and request.method == 'POST':
-        logout(request)
-        loggedout = redirect('/loggedout/')
-        return loggedout
     return render(request, 'login/History.html')
 
 

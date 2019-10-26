@@ -24,7 +24,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item ">
-        <form method="POST" ,action="">
+        <form method="POST" ,action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger mx-3">Logout</button>
         </form>
@@ -32,4 +32,9 @@
     </ul>
   </div>
 </nav>
+<form action='' method='POST'>
+  {% csrf_token %}
+   {{ form }}
+  <input value = 'submit' type='submit'>
+</form>
 {% endblock body %}
