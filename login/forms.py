@@ -2,8 +2,15 @@ from django import forms
 from django.forms import ModelForm
 from .models import Booking
 from django.contrib.auth.models import User
+import datetime as dt
 
 class BookingForm(ModelForm):
+    HOUR_CHOICES = [(dt.time(hour=x), '{:02d}:00'.format(x)) for x in range(8, 18)]
+    audi_choices = [
+        ('Auditorium','Auditorium'),
+        ('Place2','Place2'),
+        ('Place3','Place3')
+    ]
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -35,21 +42,33 @@ class BookingForm(ModelForm):
             }
         )
     )
-    start_time= forms.TimeField(
-        widget=forms.TextInput(
-            attrs={
-                'type': 'time',
+    place= forms.ChoiceField(
+        choices = audi_choices,
+        widget = forms.Select(
+            attrs = {
                 'class' : 'form-control',
-                'id' : 'validationTooltip05',
+                'id' : 'validationTooltip04',
+                'placeholder' : 'Date',
             }
         )
     )
-    end_time= forms.TimeField(
-        widget=forms.TextInput(
-            attrs={
-                'type': 'time',
+    start_time= forms.ChoiceField(
+        choices = HOUR_CHOICES,
+        widget = forms.Select(
+            attrs = {
                 'class' : 'form-control',
-                'id' : 'validationTooltip06',
+                'id' : 'validationTooltip04',
+                'placeholder' : 'Date',
+            }
+        )
+    )
+    end_time= forms.ChoiceField(
+        choices = HOUR_CHOICES,
+        widget = forms.Select(
+            attrs = {
+                'class' : 'form-control',
+                'id' : 'validationTooltip04',
+                'placeholder' : 'Date',
             }
         )
     )
