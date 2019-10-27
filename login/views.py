@@ -47,7 +47,7 @@ def loggedout(request):
 @login_required
 def booking(request):
     if request.method == 'POST':
-        form = BookingForm(request.POST)
+        form = BookingForm(request.POST,request = request)
         if form.is_valid:
             form.save()
         else:
