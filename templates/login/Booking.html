@@ -34,7 +34,7 @@
 </nav>
 
 
-<div class='container'>
+<div class='container my-5'>
 <form class="needs-validation" novalidate action=' ' method='POST'>
   {% csrf_token %}
   <div class="form-row">
@@ -53,31 +53,26 @@
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">Place</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend">1</span>
-        </div>
+      <label for="validationTooltip01">Place</label>
         {{ form.place }}
-        <div class="invalid-tooltip">
-          Please choose a unique and valid username.
-        </div>
+      <div class="valid-tooltip">
+        Looks good!
       </div>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">City</label>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip03">Date</label>
       {{ form.date }}
       <div class="invalid-tooltip">
         Please provide a valid city.
       </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationTooltip04">Start-time</label>
       {{ form.start_time}}   
      </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationTooltip05">End-time</label>
   {{ form.end_time}}
     </div>
