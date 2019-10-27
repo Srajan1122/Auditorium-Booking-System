@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,30 +22,51 @@
   </button>
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item mx-3">
-        <a class="nav-link" href="/Homepage/">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item mx-3" >
+          {% url 'success' as Homepage %}
+          {% if request.path != Homepage %} <a class="nav-link" href="{% url 'success' %}">Home <span class="sr-only">(current)</span></a>
+          {% else %}
+          <a class="nav-link active" href="{{ Homepage }}">Home <span class="sr-only">(current)</span></a>
+          {% endif %}
       </li>
       <li class="nav-item mx-3">
-        <a class="nav-link" href="/booking/">Make a Booking</a>
-      </li>
-      <li class="nav-item mx-3 active">
-        <a class="nav-link" href="/History/">History</a>
+          {% url 'booking' as booking %}
+          {% if request.path != booking %} <a class="nav-link"  href="{{ booking }}">Make a Booking</a>
+          {% else %}
+          <a class="nav-link active"  href="{{ booking }}">Make a Booking</a>
+          {% endif %}   
       </li>
       <li class="nav-item mx-3">
-        <a class="nav-link" href="/pending/">Pending requests</a>
+          {% url 'History' as History %}
+          {% if request.path != History %} <a class="nav-link"  href="{{ History }}">History</a>
+          {% else %}
+          <a class="nav-link active"  href="{{ History }}">History</a>
+          {% endif %}
+        
+      </li> 
+      <li class="nav-item mx-3">
+          {% url 'pending' as pending %}
+          {% if request.path != pending %} <a class="nav-link"  href="{{ pending }}">Pending requests</a>
+        </li>
+          {% else %}
+          <a class="nav-link active "  href="{{ pending }}">Pending requests</a>
+          {% endif %}
+       
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item ">
         <form method="POST" action="{% url 'logout'%}">
           {% csrf_token %}
-          <a class="navbar-brand text-capitalize navbar-brand text-white">{{ user }}</a>
+          <a class="navbar-brand text-capitalize navbar-brand text-white">Welcome {{ user }}!!</a>
           <button type="submit" class="btn btn-danger mx-3">Logout</button>
         </form>
       </li>
     </ul>
   </div>
 </nav>
+<h1>URL of this page: {{ request.path }}</h1>
+{% if request.path == url1 %}<h1>hi</h1>{% endif %}
   {% block body %} {% endblock body %}
 
   <!-- Optional JavaScript -->
