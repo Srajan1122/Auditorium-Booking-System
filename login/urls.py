@@ -10,4 +10,5 @@ urlpatterns = [
     path("Requests/", views.Requests, name="Requests"),
     path("History/", views.History, name="History"),
     path("Register/", views.Register, name="Register"),
+    path("user_admin/", views.user_admin, name="user_admin"),
 ]

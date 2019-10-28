@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import BookingForm
 from django.http import HttpResponse
 from .models import Booking
+import sys
 
 
 def loginpage(request):
@@ -19,11 +20,14 @@ def loginpage(request):
         print(user)
         if user is not None:
             login(request, user)
+            if Username == 'srajan':
+              return redirect('/user_admin/')
             response = redirect('/Homepage/')
             return response
         else:
             failedresponse = redirect('/failed/')
             return failedresponse
+        
     return render(request, 'login/loginpage.html')
 
 
@@ -71,6 +75,8 @@ def Requests(request):
 def History(request):
     return render(request, 'login/History.html')
 
+def user_admin(request):
+    return render(request, 'login/admin.html')
 
 def Register(request):
     if request.method == "POST":
