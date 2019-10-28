@@ -12,23 +12,15 @@
           </tr>
         </thead>
         <tbody>
+          {% for i in Object %}
           <tr>
-           
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>tk</td>
-            <td>Mark</td>
-            
+           <td>{{i.place}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.start_time}}</td>
+            <td>{{i.end_time}}</td>
+            <td>{{i.status}}</td>
           </tr>
-          <tr>
-                
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>tk</td>
-                <td>Mark</td>
-              </tr>
+          {% endfor %}
          </tbody>
       </table>
     </div>

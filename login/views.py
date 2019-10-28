@@ -61,9 +61,9 @@ def booking(request):
 
 @login_required
 def Requests(request):
-    x=Booking.objects.filter(userid=request.user.id).get()
+    x=Booking.objects.filter(userid=request.user.id)
     params={'Object':x}
-    print(x.Date)
+    print(x)
     return render(request, 'login/Requests.html',params)
 
 
