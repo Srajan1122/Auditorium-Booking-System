@@ -1,94 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
 
-  <title>{% block title %} {% endblock title %}</title>
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item mx-3">
-           {% url 'success' as Homepage %}
-          {% if request.path != Homepage %} <a class="nav-link" href="{% url 'success' %}">Home <span
-              class="sr-only">(current)</span></a>
-          {% else %}
-          <a class="nav-link active" href="{{ Homepage }}">Home <span class="sr-only">(current)</span></a>
-          {% endif %} 
-         
-        </li>
-        <li class="nav-item mx-3">
-          {% url 'booking' as booking %}
-          {% if request.path != booking %} <a class="nav-link" href="{{ booking }}">Make a Booking</a>
-          {% else %}
-          <a class="nav-link active" href="{{ booking }}">Make a Booking</a>
-          {% endif %}
-        </li>
-        <li class="nav-item mx-3">
-          {% url 'History' as History %}
-          {% if request.path != History %} <a class="nav-link" href="{{ History }}">History</a>
-          {% else %}
-          <a class="nav-link active" href="{{ History }}">History</a>
-          {% endif %}
-
-        </li>
-        <li class="nav-item mx-3">
-          {% url 'Requests' as Requests %}
-          {% if request.path != Requests %} <a class="nav-link" href="{{ Requests }}">Requests</a>
-        </li>
-        {% else %}
-        <a class="nav-link active " href="{{ Requests }}">Requests</a>
-        {% endif %}
-
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item mx-3">
+            {% url 'success' as Homepage %}
+            <a
+              class="nav-link {% if request.path == Homepage %}active{% endif %}"
+              href="{{ Homepage }}"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item mx-3">
+            {% url 'booking' as booking %}
+            <a
+              class="nav-link{% if request.path == booking %} active{% endif %}"
+              href="{{ booking }}"
+              >Make a Booking</a
+            >
+          </li>
+          <li class="nav-item mx-3">
+            {% url 'History' as History %}
+            <a
+              class="nav-link{% if request.path == History %} active{% endif %}"
+              href="{{ History }}"
+              >History</a
+            >
+          </li>
+          <li class="nav-item mx-3">
+            {% url 'Requests' as Requests %}
+            <a
+              class="nav-link{% if request.path == Requests %} active{% endif %} "
+              href="{{ Requests }}"
+              >Requests</a
+            >
+          </li>
+        </ul>
+      </div>
+      <ul class="nav navbar-nav navbar-right mx-3">
+        <li>
+          <a class="navbar-brand text-capitalize navbar-brand text-white"
+            >Welcome {{ user }}!!</a
+          >
         </li>
       </ul>
-    </div>
-      <ul class="nav navbar-nav navbar-right mx-3">
-          <li>
-        <a class="navbar-brand text-capitalize navbar-brand text-white">Welcome {{ user }}!!</a>
-      </li>
-      </ul> 
-  
+
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item ">
           <form method="POST" action="{% url 'logout'%}">
             {% csrf_token %}
-            
+
             <button type="submit" class="btn btn-danger mx-3">Logout</button>
           </form>
         </li>
       </ul>
-    
-     </nav>
-  <h1>URL of this page: {{ request.path }}</h1>
-  {% if request.path == url1 %}<h1>hi</h1>{% endif %}
-  {% block body %} {% endblock body %}
+    </nav>
+    <h1>URL of this page: {{ request.path }}</h1>
+    {% if request.path == url1 %}
+    <h1>hi</h1>
+    {% endif %} {% block body %} {% endblock body %}
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
