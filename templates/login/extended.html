@@ -23,12 +23,13 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item mx-3">
-          {% url 'success' as Homepage %}
+           {% url 'success' as Homepage %}
           {% if request.path != Homepage %} <a class="nav-link" href="{% url 'success' %}">Home <span
               class="sr-only">(current)</span></a>
           {% else %}
           <a class="nav-link active" href="{{ Homepage }}">Home <span class="sr-only">(current)</span></a>
-          {% endif %}
+          {% endif %} 
+         
         </li>
         <li class="nav-item mx-3">
           {% url 'booking' as booking %}
@@ -46,11 +47,11 @@
 
         </li>
         <li class="nav-item mx-3">
-          {% url 'pending' as pending %}
-          {% if request.path != pending %} <a class="nav-link" href="{{ pending }}">Pending requests</a>
+          {% url 'Requests' as Requests %}
+          {% if request.path != Requests %} <a class="nav-link" href="{{ Requests }}">Requests</a>
         </li>
         {% else %}
-        <a class="nav-link active " href="{{ pending }}">Pending requests</a>
+        <a class="nav-link active " href="{{ Requests }}">Requests</a>
         {% endif %}
 
         </li>

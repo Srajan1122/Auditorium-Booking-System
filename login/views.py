@@ -35,6 +35,7 @@ def success(request):
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     hi = request.user.username
     params = {'pro': hi}
+    print ("id:",request.user.id)
     return render(request, 'login/Homepage.html', params)
 
 
@@ -46,7 +47,7 @@ def loggedout(request):
 
 @login_required
 def booking(request):
-    if request.method == 'POST':
+    if 'userid' in request.POST or request.method == "POST":
         form = BookingForm(request.POST,request = request)
         if form.is_valid:
             form.save()
@@ -56,8 +57,8 @@ def booking(request):
     return render(request, 'login/Booking.html',{'form' : form})
 
 @login_required
-def pending(request):
-    return render(request, 'login/pending.html')
+def Requests(request):
+    return render(request, 'login/Requests.html')
 
 
 @login_required
