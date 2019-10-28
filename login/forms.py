@@ -80,11 +80,10 @@ class BookingForm(ModelForm):
         )
     )
 
-    
     class Meta:
         model = Booking
         
-        fields = ('name','email','place','date','start_time','end_time')
+        fields = ('name','email','place','date','start_time','end_time' )
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
