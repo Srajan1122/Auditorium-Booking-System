@@ -7,7 +7,7 @@ urlpatterns = [
     path("Homepage/", views.success, name="success"),
     path("loggedout/", views.loggedout, name="logout"),
     path("booking/", views.booking, name="booking"),
-    path("pending/", views.pending, name="pending"),
+    path("Requests/", views.Requests, name="Requests"),
     path("History/", views.History, name="History"),
     path("Register/", views.Register, name="Register"),
 ]

@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .forms import BookingForm
 from django.http import HttpResponse
+from .models import Booking
 
 
 def loginpage(request):
@@ -35,6 +36,7 @@ def success(request):
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     hi = request.user.username
     params = {'pro': hi}
+    print ("id:",request.user.id)
     return render(request, 'login/Homepage.html', params)
 
 
@@ -46,18 +48,23 @@ def loggedout(request):
 
 @login_required
 def booking(request):
-    if request.method == 'POST':
+    if 'userid' in request.POST or request.method == "POST":
         form = BookingForm(request.POST,request = request)
         if form.is_valid:
-            form.save()
+            Bookingform = form.save(commit=False)
+            Bookingform.userid = request.user.id  # The logged-in user
+            Bookingform.save()
         else:
             return HttpResponse('invail form')
     form = BookingForm(request = request )
     return render(request, 'login/Booking.html',{'form' : form})
 
 @login_required
-def pending(request):
-    return render(request, 'login/pending.html')
+def Requests(request):
+    x=Booking.objects.filter(userid=request.user.id)
+    params={'Object':x}
+    print(x)
+    return render(request, 'login/Requests.html',params)
 
 
 @login_required

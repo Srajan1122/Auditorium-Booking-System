@@ -20,6 +20,7 @@ class Booking(models.Model):
     start_time = models.TimeField(choices= HOUR_CHOICES)
     end_time = models.TimeField(choices= HOUR_CHOICES)
     status = models.BooleanField(default=False)
+    userid=models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.name

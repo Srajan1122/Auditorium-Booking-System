@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from .models import Booking
 from django.contrib.auth.models import User
 import datetime as dt
+from django.shortcuts import render
 
 class BookingForm(ModelForm):
     HOUR_CHOICES = [(dt.time(hour=x), '{:02d}:00'.format(x)) for x in range(8, 18)]
@@ -18,6 +19,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip01',
                 'placeholder' : 'Name',
+                'required': True,
             }
         )
     )
@@ -28,6 +30,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip02',
                 'placeholder' : 'Email',
+                'required': True,
 
             }
         )
@@ -39,6 +42,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip03',
                 'placeholder' : 'Date',
+                'required': True,
             }
         )
     )
@@ -49,6 +53,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip04',
                 'placeholder' : 'Date',
+                'required': True,
             }
         )
     )
@@ -59,6 +64,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip04',
                 'placeholder' : 'Date',
+                'required': True,
             }
         )
     )
@@ -69,11 +75,15 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip04',
                 'placeholder' : 'Date',
+                'required': True,
             }
         )
     )
+
+    
     class Meta:
         model = Booking
+        
         fields = ('name','email','place','date','start_time','end_time')
 
     def __init__(self, *args, **kwargs):
