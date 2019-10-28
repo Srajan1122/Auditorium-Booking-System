@@ -44,9 +44,10 @@
       <label for="validationTooltip05">End-time</label>
   {{ form.end_time}}
     </div>
-   
+    <div class="col-md-4 mb-3">
+     {{ form.userid}}
   </div>
-  <input type="hidden" name="userid" value={{request.user.id}}>
+  </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 </div>
