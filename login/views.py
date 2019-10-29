@@ -91,3 +91,6 @@ def Register(request):
         return response
 
     return render(request, 'login/register.html')
+@login_required
+def slots(request):
+    return render(request, 'login/slots.html')

@@ -11,4 +11,5 @@ urlpatterns = [
     path("History/", views.History, name="History"),
     path("Register/", views.Register, name="Register"),
     path("user_admin/", views.user_admin, name="user_admin"),
+     path("slots/", views.slots, name="slots"),
 ]
