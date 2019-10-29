@@ -1,3 +1,5 @@
 {
+    "git.enabled":true,
+    "git.path":"C:\\Program Files\\Git\\cmd\\git.exe",
     "python.pythonPath": "C:\\Users\\user\\envs\\dante\\Scripts\\python.exe"
 }
