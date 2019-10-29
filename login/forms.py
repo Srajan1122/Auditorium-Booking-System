@@ -19,7 +19,8 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip01',
                 'placeholder' : 'Name',
-                'required': True,
+                'readonly': True,
+               
             }
         )
     )
@@ -30,7 +31,7 @@ class BookingForm(ModelForm):
                 'class' : 'form-control',
                 'id' : 'validationTooltip02',
                 'placeholder' : 'Email',
-                'required': True,
+                'readonly': True,
 
             }
         )

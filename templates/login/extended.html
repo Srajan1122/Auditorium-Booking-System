@@ -63,8 +63,14 @@
             <a
               class="nav-link{% if request.path == Requests %} active{% endif %} "
               href="{{ Requests }}"
-              >Requests</a
-            >
+              >Requests</a>
+          </li>
+          <li class="nav-item mx-3">
+            {% url 'slots' as slots %}
+            <a
+              class="nav-link{% if request.path == slots %} active{% endif %} "
+              href="{{ slots }}"
+              >Available slots</a>
           </li>
         </ul>
       </div>
