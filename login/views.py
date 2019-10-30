@@ -58,6 +58,7 @@ def booking(request):
             Bookingform = form.save(commit=False)
             Bookingform.userid = request.user.id  # The logged-in user
             Bookingform.save()
+            return redirect('/Requests/')
         else:
             return HttpResponse('invail form')
     form = BookingForm(request = request )
