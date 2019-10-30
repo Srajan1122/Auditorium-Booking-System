@@ -93,6 +93,9 @@ def Register(request):
     return render(request, 'login/register.html')
 @login_required
 def slots(request):
-    k={  'pro':range(8,18)
+    x = Booking.objects.filter()
+    k={  
+        'pro':range(8,18),
+        'book': x
     }
     return render(request, 'login/slots.html',k)
