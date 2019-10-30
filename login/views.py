@@ -93,4 +93,6 @@ def Register(request):
     return render(request, 'login/register.html')
 @login_required
 def slots(request):
-    return render(request, 'login/slots.html')
+    k={  'pro':range(8,18)
+    }
+    return render(request, 'login/slots.html',k)
