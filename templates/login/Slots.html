@@ -4,3 +4,36 @@
     Slots
 {% endblock title %}
     
+    {% block body %}
+        <div class="table-responsive container">
+<table class="table  table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Start-Time</th>
+            <th scope="col">End-Time</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in pro %}
+          <tr>  
+           <td>{{ i }}:00</td>
+            <td>{{ i|add:"1" }}:00</td>
+            <td>Available</td>
+            <td>Available</td>
+            <td>Available</td>
+            <td>Available</td>
+            <td>Available</td>
+            <td>Available</td>
+          </tr>
+          {% endfor %}
+         </tbody>
+      </table>
+    </div>
+    {% endblock body %}
+        
