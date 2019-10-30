@@ -8,6 +8,7 @@ from .forms import BookingForm
 from django.http import HttpResponse
 from .models import Booking
 import sys
+import itertools
 
 
 def loginpage(request):
